@@ -1,0 +1,51 @@
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.first {
+    display: flex;
+    align-items: center;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.home-link {
+    text-decoration: none;
+    color: #313131;
+}
+
+.menu-link {
+    border-radius: 8px;
+}
+
+.menu-link:hover {
+    background-color: rgb(231, 151, 1);
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .application-title {
+        font-size: 15px;
+    }
+
+    .first {
+        width: 100%;
+    }
+
+    .second {
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

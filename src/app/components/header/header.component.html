@@ -1,9 +1,16 @@
 <header>
-    <mat-toolbar color="primary">
-        <button mat-icon-button (click)="menuClicked()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <span>Altri mondi oltre a questo</span>
+    <mat-toolbar class="header" color="primary">
+        <div class="first">
+            <button mat-icon-button (click)="menuClicked()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <a class="home-link" routerLink="/home"><span class="application-title">Altri mondi oltre a questo</span></a>
+        </div>
         <span class="spacer"></span>
+        <nav class="second">
+            <a class="menu-link" mat-button routerLink="/books">LIBRI</a>
+            <a class="menu-link" mat-button routerLink="/comics">FUMETTI</a>
+            <a class="menu-link" mat-button routerLink="/collectibles">COLLECTIBLES</a>
+        </nav>
     </mat-toolbar>
 </header>
