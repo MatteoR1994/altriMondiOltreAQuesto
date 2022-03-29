@@ -8,6 +8,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from "@angular/forms";
 
+// import { AngularFireModule } from '@angular/fire';
+// import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
+import { AngularFireModule } from '@angular/fire/compat';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BooksComponent } from './components/books/books.component';
 import { ComicsComponent } from './components/comics/comics.component';
 import { CollectiblesComponent } from './components/collectibles/collectibles.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,9 @@ import { CollectiblesComponent } from './components/collectibles/collectibles.co
     MatSidenavModule,
     FormsModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // for firestore
   ],
   providers: [],
   bootstrap: [AppComponent]

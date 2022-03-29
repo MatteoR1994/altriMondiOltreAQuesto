@@ -1,1 +1,6 @@
-<p>books works!</p>
+<div class="container">
+    <ol>
+        <li *ngFor="let author of authors"> {{author.name}} - {{author.surname}} -
+             {{author.nationality}} - {{author.photoUrl}}</li>
+    </ol>
+</div>
