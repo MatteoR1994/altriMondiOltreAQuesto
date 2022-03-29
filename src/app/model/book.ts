@@ -1,6 +1,17 @@
 export interface Book {
-    id: number;
+    idBook: number;
     title: string;
-    author: string;
-    year: number;
+    idAuthor: string;
+    idPublishingHouse: number;
+    publishingYear: number;
+    pages: number;
+    idFormat: number;
+    idDetailsType: number;
+    idBookSerie?: number;
+    numberBookSerie?: number;
+    coverUrl: string;
+    isbn: string;
+    autographed: boolean;
+    language: string;
+    idPosition: number;
 }

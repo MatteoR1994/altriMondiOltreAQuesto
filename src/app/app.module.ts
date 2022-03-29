@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +37,8 @@ import { CollectiblesComponent } from './components/collectibles/collectibles.co
     MatButtonModule,
     MatSidenavModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

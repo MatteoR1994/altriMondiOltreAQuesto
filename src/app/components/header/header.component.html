@@ -8,9 +8,14 @@
         </div>
         <span class="spacer"></span>
         <nav class="second">
-            <a class="menu-link" mat-button routerLink="/books">LIBRI</a>
+            <!-- <a class="menu-link" mat-button routerLink="/books">LIBRI</a>
             <a class="menu-link" mat-button routerLink="/comics">FUMETTI</a>
-            <a class="menu-link" mat-button routerLink="/collectibles">COLLECTIBLES</a>
+            <a class="menu-link" mat-button routerLink="/collectibles">COLLECTIBLES</a> -->
+            <nav mat-tab-nav-bar>
+                <a class="menu-link" mat-tab-link routerLink="/books">LIBRI</a>
+                <a class="menu-link" mat-tab-link routerLink="/comics">FUMETTI</a>
+                <a class="menu-link" mat-tab-link routerLink="/collectibles">COLLECTIBLES</a>
+            </nav>
         </nav>
     </mat-toolbar>
 </header>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ComService } from 'src/app/services/com.service';
+import { ComService } from 'src/app/services/com/com.service';
 
 @Component({
   selector: 'app-header',
