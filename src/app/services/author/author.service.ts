@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/compat/firestore';
 import { BehaviorSubject } from 'rxjs';
 import { Author } from 'src/app/model/author';
 
@@ -9,6 +9,7 @@ import { Author } from 'src/app/model/author';
 export class AuthorService {
 
   private dbPath = 'authors';
+
   public tutorialsRef: AngularFirestoreCollection<Author>;
 
   public allAuthors$ = new BehaviorSubject<Author[]>([]);
@@ -20,17 +21,22 @@ export class AuthorService {
     this.getAllAuthors();
   }
 
-  // getAll(): AngularFirestoreCollection<Author> {
-  //   return this.tutorialsRef;
-  // }
-
   getAllAuthors() {
     this.tutorialsRef.get().subscribe((ss) => {
       ss.docs.forEach((doc) => {
         this.authors.push(doc.data());
       });
-    });    
+    });  
     this.allAuthors$.next(this.authors);
+  }
+
+  addNewAuthor(newAuthor: any): Promise<DocumentReference<any>> {
+    return this.db.collection('authors').add({
+      name: newAuthor.name,
+      surname: newAuthor.surname,
+      nationality: newAuthor.nationality,
+      photoUrl: newAuthor.photoUrl
+    });
   }
 
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Author } from 'src/app/model/author';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { AuthorService } from 'src/app/services/author/author.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-books',
@@ -14,20 +14,34 @@ export class BooksComponent implements OnInit {
 
   public authors: Author[] = [];
 
-  public myArray: Author[] = [];
-
-  constructor(private authorService: AuthorService, private firestore: AngularFirestore) { }
+  constructor(private authorService: AuthorService, public authService: AuthService) { }
 
   ngOnInit(): void {
-    // this.authorService.tutorialsRef.get().subscribe((ss) => {
-    //   ss.docs.forEach((doc) => {
-    //     this.authors.push(doc.data());
-    //   });
-    // });
-    // console.log(this.authors);
     this.authorService.allAuthors$.subscribe((data) => {
       this.authors = data;
     });
+  }
+
+  public form = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    surname: new FormControl('', [Validators.required]),
+    nationality: new FormControl('', [Validators.required]),
+    photoUrl: new FormControl('', [Validators.required])
+  });
+
+  get f(){
+    return this.form.controls;
+  }
+  
+  saveNewAuthor() {
+    const newAuthorObject = this.form.value as Author;
+    this.authorService.addNewAuthor(newAuthorObject)
+      .then((response) => {
+        console.log(response);
+        const presenti = this.authorService.allAuthors$.value;
+        presenti.push(newAuthorObject);
+        this.authorService.allAuthors$.next(presenti);
+      });
   }
 
 }

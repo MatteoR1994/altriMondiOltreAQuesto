@@ -3,4 +3,48 @@
         <li *ngFor="let author of authors"> {{author.name}} - {{author.surname}} -
              {{author.nationality}} - {{author.photoUrl}}</li>
     </ol>
+
+    <form class="form" [formGroup]="form" (ngSubmit)="saveNewAuthor()">
+        <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="name" id="name" type="text">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Cognome</mat-label>
+            <input matInput formControlName="surname" id="surname" type="text">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Nazionalità</mat-label>
+            <input matInput formControlName="nationality" id="nationality" type="text">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Photo Url</mat-label>
+            <input matInput formControlName="photoUrl" id="photoUrl" type="text">
+        </mat-form-field>
+
+        <div class="row-fields-container">
+            <button mat-raised-button class="submitButton" color="primary" [disabled]="form.invalid" type="submit">INVIA</button>
+        </div>
+    </form>
+
+    <!-- <div class="authBlock">
+        <h3>Sign In</h3>
+        <div class="formGroup">
+            <input type="text" class="formControl" placeholder="Username" #userName required>
+        </div>
+        <div class="formGroup">
+            <input type="password" class="formControl" placeholder="Password" #userPassword required>
+        </div>
+        <div class="formGroup">
+            <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.signIn(userName.value, userPassword.value)">
+        </div>
+    </div>
+
+    <div *ngIf="authService.isLoggedIn">
+        Loggato!
+        <a class="nav-link" (click)="authService.signOut()">
+            <i class="fas fa-sign-out-alt"></i>Log out
+          </a>
+    </div> -->
+
 </div>
